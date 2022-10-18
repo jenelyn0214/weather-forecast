@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Landing = () => {
   const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isAuthenticated && !isLoading) {
       navigate("/");

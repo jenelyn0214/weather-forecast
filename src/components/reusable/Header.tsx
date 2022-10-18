@@ -12,7 +12,7 @@ const Header = () => {
       <LogoContainer>
         <Logo src={logo} alt="Logo" />
         {/* @ts-ignore */}
-        <Hidden mdDown>
+        <Hidden mdDown={isAuthenticated}>
           <LogoLabel>Weather Forecast</LogoLabel>
         </Hidden>
       </LogoContainer>

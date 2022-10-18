@@ -9,7 +9,7 @@ const Home = () => {
   const location = useLocation();
   const { user, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
-  const [city, setCity] = useState(location.state.city || "");
+  const [city, setCity] = useState(location?.state?.city ?? "");
 
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {

@@ -18,13 +18,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import IWeather from "../interfaces/weather";
 
-// API KEY AND URL
 const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
 const Weather = () => {
   const { isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
-  // State
+
   const [apiData, setApiData] = useState<IWeather>();
   const { city } = useParams();
 
@@ -41,6 +40,7 @@ const Weather = () => {
     if (!city) {
       navigate("/");
     }
+
     if (city) {
       fetch(apiUrl)
         .then((res) => res.json())
@@ -52,13 +52,11 @@ const Weather = () => {
     return (k - 273.15).toFixed(2);
   };
 
-  console.log("apiData", apiData);
-
   if (isLoading) {
     return <Container className="text-center">Loading Page...</Container>;
   }
 
-  const WeatherRow = apiData?.weather?.map((item, i) => {
+  const WeatherRow = apiData?.weather?.map((item) => {
     const dt = new Date(apiData?.dt * 1000);
 
     const formattedDate = dt.toLocaleDateString("en-US");
