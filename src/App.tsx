@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import Landing from "./components/Landing";
 import Weather from "./components/Weather";
 import { styled } from "@material-ui/core";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 const AppRoutes = () => {
   let routes = useRoutes([

@@ -4,6 +4,7 @@ import {
   Container,
   TableHeadRow,
   TableRow,
+  TableHeadCell,
 } from "./reusable/StyledComponents";
 import {
   Table,
@@ -28,7 +29,7 @@ const Weather = () => {
   const { city } = useParams();
 
   const safeCity = decodeURI(city || "").replaceAll(" ", ",");
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${safeCity}&appid=${apiKey}`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${safeCity}&appid=${apiKey}&units=imperial`;
 
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {
@@ -48,10 +49,6 @@ const Weather = () => {
     }
   }, [apiUrl, city]);
 
-  const kelvinToFarenheit = (k: number) => {
-    return (k - 273.15).toFixed(2);
-  };
-
   if (isLoading) {
     return <Container className="text-center">Loading Page...</Container>;
   }
@@ -64,7 +61,7 @@ const Weather = () => {
     return (
       <TableRow key={"weather_id" + item.id}>
         <TableCell>{formattedDate}</TableCell>
-        <TableCell>{kelvinToFarenheit(apiData?.main?.temp || 0)}</TableCell>
+        <TableCell>{apiData?.main?.temp}</TableCell>
         {/* @ts-ignore */}
         <Hidden mdDown>
           <TableCell>{item.description}</TableCell>
@@ -82,14 +79,14 @@ const Weather = () => {
       <Table className="mb-10">
         <TableHead>
           <TableHeadRow>
-            <TableCell>Date (mm/dd/yyyy)</TableCell>
-            <TableCell>Temp (F)</TableCell>
+            <TableHeadCell>Date (mm/dd/yyyy)</TableHeadCell>
+            <TableHeadCell>Temp (F)</TableHeadCell>
             {/* @ts-ignore */}
             <Hidden mdDown>
-              <TableCell>Description</TableCell>
-              <TableCell>Main</TableCell>
-              <TableCell>Pressure</TableCell>
-              <TableCell>Humidity</TableCell>
+              <TableHeadCell>Description</TableHeadCell>
+              <TableHeadCell>Main</TableHeadCell>
+              <TableHeadCell>Pressure</TableHeadCell>
+              <TableHeadCell>Humidity</TableHeadCell>
             </Hidden>
           </TableHeadRow>
         </TableHead>

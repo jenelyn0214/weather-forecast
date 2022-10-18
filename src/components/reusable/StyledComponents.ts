@@ -2,8 +2,8 @@ import {
   styled,
   Button as MuiButton,
   Container as MuiContainer,
-  TableHead as MuiTableHead,
   TableRow as MuiTableRow,
+  TableCell as MuiTableCell,
 } from "@material-ui/core";
 
 export const Button = styled(MuiButton)({
@@ -26,6 +26,11 @@ export const TableHeadRow = styled(MuiTableRow)({
   backgroundColor: "#486e91",
   color: "#FFF",
 });
+
+export const TableHeadCell = styled(MuiTableCell)({
+  color: "#FFF",
+});
+
 export const TableRow = styled(MuiTableRow)({
   backgroundColor: "#FFF",
   color: "#000",
