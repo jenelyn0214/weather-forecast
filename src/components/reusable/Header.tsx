@@ -2,8 +2,11 @@ import logo from "../../logo.svg";
 import { ExitToApp } from "@material-ui/icons";
 import { Button } from "./StyledComponents";
 import { Hidden, styled } from "@material-ui/core";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
+  const { logout, isAuthenticated } = useAuth0();
+
   return (
     <HeaderContainer>
       <LogoContainer>
@@ -13,9 +16,17 @@ const Header = () => {
           <LogoLabel>Weather Forecast</LogoLabel>
         </Hidden>
       </LogoContainer>
-      <Button variant="contained" startIcon={<ExitToApp />}>
-        Log out
-      </Button>
+      {isAuthenticated && (
+        <Button
+          variant="contained"
+          startIcon={<ExitToApp />}
+          onClick={() =>
+            logout({ returnTo: window.location.origin + "/login" })
+          }
+        >
+          Log out
+        </Button>
+      )}
     </HeaderContainer>
   );
 };

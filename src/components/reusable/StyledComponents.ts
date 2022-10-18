@@ -22,7 +22,7 @@ export const Container = styled(MuiContainer)({
   fontSize: 20,
 });
 
-export const TableHead = styled(MuiTableHead)({
+export const TableHeadRow = styled(MuiTableRow)({
   backgroundColor: "#486e91",
   color: "#FFF",
 });
