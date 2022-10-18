@@ -1,31 +1,44 @@
 import logo from "../../logo.svg";
-import Styled from "styled-components";
+import { ExitToApp } from "@material-ui/icons";
+import { Button } from "./StyledComponents";
+import { Hidden, styled } from "@material-ui/core";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <HeaderLogo src={logo} alt="Logo" />
-      <HeaderLabel>Weather Forecast</HeaderLabel>
+      <LogoContainer>
+        <Logo src={logo} alt="Logo" />
+        {/* @ts-ignore */}
+        <Hidden mdDown>
+          <LogoLabel>Weather Forecast</LogoLabel>
+        </Hidden>
+      </LogoContainer>
+      <Button variant="contained" startIcon={<ExitToApp />}>
+        Log out
+      </Button>
     </HeaderContainer>
   );
 };
 
 export default Header;
 
-const HeaderContainer = Styled.div`
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 5px 19px -3px rgba(0,0,0,0.24);
-    -webkit-box-shadow: 0px 5px 19px -3px rgba(0,0,0,0.24);
-    -moz-box-shadow: 0px 5px 19px -3px rgba(0,0,0,0.24);
-    padding: 10px;
-`;
+const HeaderContainer = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  boxShadow: "0px 5px 19px -3px rgba(0,0,0,0.24)",
+  padding: 10,
+  justifyContent: "space-between",
+});
+const LogoContainer = styled("div")({
+  display: "flex",
+  alignItems: "center",
+});
 
-const HeaderLogo = Styled.img`
-    height: 100px
-`;
+const Logo = styled("img")({
+  height: 100,
+});
 
-const HeaderLabel = Styled.h2`
-    color: #213343;
-    margin-left: 15px
-`;
+const LogoLabel = styled("h2")({
+  color: "#213343",
+  marginLeft: 15,
+});

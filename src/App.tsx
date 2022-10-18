@@ -4,7 +4,7 @@ import Header from "./components/reusable/Header";
 import Home from "./components/Home";
 import Landing from "./components/Landing";
 import Weather from "./components/Weather";
-import Styled from "styled-components";
+import { styled } from "@material-ui/core";
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -32,6 +32,6 @@ const App = () => {
 
 export default App;
 
-const Content = Styled.div`
-  padding: 20px;
-`;
+const Content = styled("div")({
+  padding: 20,
+});
